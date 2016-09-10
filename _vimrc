@@ -113,11 +113,10 @@ map <leader>tm :tabmove             " 移动当前标签到最后
 "--------------------------------------------------------------------------------
 "   TagList : Tlist
 "--------------------------------------------------------------------------------
-let str = "Hello, VimScript!"  
 let Tlist_Ctags_Cmd = '$VIM\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
 "设置taglist打开关闭的快捷键F8
 "noremap <F8> :TlistToggle<CR>
-"更新ctags标签文件快捷键设置 
+"更新ctags标签文件快捷键设置
 "noremap <F5> :!F:/Vim/vimfiles/bundle/ctags.exe/ctags.exe -R
 let Tlist_Auto_Highlight_Tag = 1            "自动高亮当前tag
 let Tlist_Auto_Open = 0                     "用Vim打开文件时自动打开Taglist窗口
@@ -176,12 +175,12 @@ let g:defaultExplorer = 0
 
 "自动打开
 autocmd VimEnter * WMToggle
-function! NERDTree_Start() 
+function! NERDTree_Start()
     exe 'q'
     exe 'NERDTree'
 endfunction
 
-function! NERDTree_IsValid() 
+function! NERDTree_IsValid()
     return 1
 endfunction
 
@@ -208,7 +207,7 @@ set laststatus=2
 "--------------------------------------------------------------------------------
 " EsayGrep
 "--------------------------------------------------------------------------------
-let g:EasyGrepMode = 2     " All:0, Open Buffers:1, TrackExt:2, 
+let g:EasyGrepMode = 2     " All:0, Open Buffers:1, TrackExt:2,
 let g:EasyGrepCommand = 0  " Use vimgrep:0, grepprg:1
 let g:EasyGrepRecursive  = 1 " Recursive searching
 let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
