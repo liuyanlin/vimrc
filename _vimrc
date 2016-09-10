@@ -113,11 +113,12 @@ map <leader>tm :tabmove             " ÒÆ¶¯µ±Ç°±êÇ©µ½×îºó
 "--------------------------------------------------------------------------------
 "   TagList : Tlist
 "--------------------------------------------------------------------------------
-let Tlist_Ctags_Cmd = 'F:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "ÉèÖÃctagsÂ·¾¶ Èç¹ûÃ»ÉèÖÃPATH±äÁ¿£¬ĞèÒªÊ¹ÓÃ´ËÑ¡ÏîÉèÖÃÒ»ÏÂ
+let str = "Hello, VimScript!"  
+let Tlist_Ctags_Cmd = '$VIM\vimfiles\bundle\ctags.exe\ctags.exe'      "ÉèÖÃctagsÂ·¾¶ Èç¹ûÃ»ÉèÖÃPATH±äÁ¿£¬ĞèÒªÊ¹ÓÃ´ËÑ¡ÏîÉèÖÃÒ»ÏÂ
 "ÉèÖÃtaglist´ò¿ª¹Ø±ÕµÄ¿ì½İ¼üF8
 "noremap <F8> :TlistToggle<CR>
-"¸üĞÂctags±êÇ©ÎÄ¼ş¿ì½İ¼üÉèÖÃ
-"noremap <F5> :!ctags -R<CR>
+"¸üĞÂctags±êÇ©ÎÄ¼ş¿ì½İ¼üÉèÖÃ 
+"noremap <F5> :!F:/Vim/vimfiles/bundle/ctags.exe/ctags.exe -R
 let Tlist_Auto_Highlight_Tag = 1            "×Ô¶¯¸ßÁÁµ±Ç°tag
 let Tlist_Auto_Open = 0                     "ÓÃVim´ò¿ªÎÄ¼şÊ±×Ô¶¯´ò¿ªTaglist´°¿Ú
 let Tlist_Auto_Update = 1                   "×Ô¶¯¸üĞÂ×îĞÂ±à¼­ÎÄ¼şµÄtaglist
@@ -132,7 +133,7 @@ let Tlist_GainFocus_On_ToggleOpen = 0       "Îª1ÔòÊ¹ÓÃTlistToggle´ò¿ª±êÇ©ÁĞ±í´°¿
 let Tlist_Hightlight_Tag_On_BufEnter = 1    "Ä¬ÈÏÇé¿öÏÂ£¬Vim´ò¿ª/ÇĞ»»ÖÁÒ»¸öĞÂµÄ»º³åÇø/ÎÄ¼şºó£¬±êÇ©ÁĞ±í´°¿Ú»á×Ô¶¯½«µ±Ç°´úÂë´°¿Ú¶ÔÓ¦µÄ±êÇ©¸ßÁÁÏÔÊ¾¡£
                                             "TlistHighlight_Tag_On_BufEnterÖÃÎª0¿É½ûÖ¹ÒÔÉÏĞĞÎª
 let Tlist_Inc_Winwidth = 0                  "ÏÔÊ¾±êÇ©ÁĞ±í´°¿ÚÊ±ÔÊĞí/½ûÖ¹À©Õ¹Vim´°¿Ú¿í¶È
-let Tlist_Max_Submenu_Items = 1             "×Ó²Ëµ¥ÏîÉÏÏŞÖµ¡£Èç×Ó²Ëµ¥Ïî³¬³ö´ËÉÏÏŞ½«»á±»·Ö¸ôµ½¶à¸ö×Ó²Ëµ¥ÖĞ¡£È±Ê¡ÖµÎª25
+let Tlist_Max_Submenu_Items = 1             "×Ó²Ëµ¥ÏîÉÏÏŞÖµ¡£Èç×Ó²Ëµ¥Ïî³¬³ö´ËÉÏTlist_GainFocus_On_ToggleOpenÏŞ½«»á±»·Ö¸ôµ½¶à¸ö×Ó²Ëµ¥ÖĞ¡£È±Ê¡ÖµÎª25
 let Tlist_Max_Tag_Length = 30               "±êÇ©²Ëµ¥ÖĞ±êÇ©³¤¶ÈÉÏÏŞ
 let Tlist_Process_File_Always = 0           "Îª1Ôò¼´Ê¹±êÇ©ÁĞ±í´°¿ÚÎ´´ò¿ª£¬taglistÈÔÈ»»áÔÚºóÌ¨´¦ÀívimËù´ò¿ªÎÄ¼şµÄ±êÇ©
 let Tlist_Show_Menu = 0                     "ÔÚÍ¼ĞÍ½çÃæVimÖĞ£¬ÊÇ·ñÒÔÏÂÀ­²Ëµ¥·½Ê½ÏÔÊ¾µ±Ç°ÎÄ¼şÖĞµÄ±êÇ©
@@ -163,6 +164,7 @@ let NERDTreeHighlightCursorline=1       "¸ßÁÁNERDTrre´°¿ÚµÄµ±Ç°ĞĞ
 "autocmd VimEnter * NERDTree             "×Ô¶¯´ò¿ª
 
 
+
 "--------------------------------------------------------------------------------
 " WinManager :WMToggle
 "--------------------------------------------------------------------------------
@@ -182,6 +184,7 @@ endfunction
 function! NERDTree_IsValid() 
     return 1
 endfunction
+
 
 
 "--------------------------------------------------------------------------------
