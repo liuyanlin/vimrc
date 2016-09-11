@@ -111,13 +111,20 @@ map <leader>tm :tabmove             " 移动当前标签到最后
 "###############################################################################
 
 "--------------------------------------------------------------------------------
+" Ctags
+"--------------------------------------------------------------------------------
+"更新ctags标签文件快捷键设置
+noremap <F5> :!F:/Vim/vimfiles/bundle/ctags.exe/ctags.exe -R
+
+
+
+
+"--------------------------------------------------------------------------------
 "   TagList : Tlist
 "--------------------------------------------------------------------------------
-let Tlist_Ctags_Cmd = '$VIM\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
+let Tlist_Ctags_Cmd = 'F:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
 "设置taglist打开关闭的快捷键F8
 "noremap <F8> :TlistToggle<CR>
-"更新ctags标签文件快捷键设置
-"noremap <F5> :!F:/Vim/vimfiles/bundle/ctags.exe/ctags.exe -R
 let Tlist_Auto_Highlight_Tag = 1            "自动高亮当前tag
 let Tlist_Auto_Open = 0                     "用Vim打开文件时自动打开Taglist窗口
 let Tlist_Auto_Update = 1                   "自动更新最新编辑文件的taglist
@@ -138,9 +145,9 @@ let Tlist_Process_File_Always = 0           "为1则即使标签列表窗口未打开，taglis
 let Tlist_Show_Menu = 0                     "在图型界面Vim中，是否以下拉菜单方式显示当前文件中的标签
 let Tlist_Show_One_File = 1                 "不同时显示多个文件的tag，仅显示一个
 let Tlist_Sort_Type = "order"
-"let Tlist_Use_Horiz_Window = 0             "标签列表窗口使用水平分割样式
-"let Tlist_Use_Right_Window = 0              "标签列表窗口显示在右侧（使用垂直分割样式时）
-"let Tlist_WinWidth = 30                     "设定水平分割时标签列表窗口的宽度
+let Tlist_Use_Horiz_Window = 0             "标签列表窗口使用水平分割样式
+let Tlist_Use_Right_Window = 0              "标签列表窗口显示在右侧（使用垂直分割样式时）
+let Tlist_WinWidth = 30                     "设定水平分割时标签列表窗口的宽度
 "let Tlist_WinHeight = 30                    "设置taglist窗口大
 
 
@@ -152,7 +159,7 @@ let Tlist_Sort_Type = "order"
 "nmap <silent> <F2> :NERDTreeMirror<CR>
 "nmap <silent> <F2> :NERDTreeToggle<CR>
 "let NERDTreeWinSize=30                  "窗口大小
-let NERDTreeWinPos='left'               "窗口位置
+"let NERDTreeWinPos='left'               "窗口位置
 let NERDTreeShowLineNumbers=1           "是否默认显示行号
 let NERDTreeShowHidden=0                "是否默认显示隐藏文件
 "不显示指定的类型的文件
@@ -160,21 +167,19 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^
 let NERDTreeCaseSensitiveSort=0         "不分大小写排序
 let NERDTreeHighlightCursorline=1       "高亮NERDTrre窗口的当前行
 "let NERDTreeShowHidden=1               "显示隐藏文件
-"autocmd VimEnter * NERDTree             "自动打开
 
 
 
 "--------------------------------------------------------------------------------
 " WinManager :WMToggle
 "--------------------------------------------------------------------------------
-let g:AutoOpenWinManager = 1 "开启Vim时自动打开
-let g:NERDTree_title="[NERDTree]"
+"let g:AutoOpenWinManager = 1 "开启Vim时自动打开
+autocmd VimEnter * WMToggle
 let g:winManagerWindowLayout="NERDTree|TagList"
 let g:winManagerWidth = 30
-let g:defaultExplorer = 0
+"let g:defaultExplorer = 0
 
-"自动打开
-autocmd VimEnter * WMToggle
+let g:NERDTree_title="[NERDTree]"
 function! NERDTree_Start()
     exe 'q'
     exe 'NERDTree'
@@ -207,11 +212,26 @@ set laststatus=2
 "--------------------------------------------------------------------------------
 " EsayGrep
 "--------------------------------------------------------------------------------
-let g:EasyGrepMode = 2     " All:0, Open Buffers:1, TrackExt:2,
-let g:EasyGrepCommand = 0  " Use vimgrep:0, grepprg:1
-let g:EasyGrepRecursive  = 1 " Recursive searching
-let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
-let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+" \vv or :Grep : \vv命令将在文件中搜索当前光标下的单词 :Grep word将搜索"word"
+"        如果加叹号:Grep !word表示全词匹配的方式搜索,
+"        :Grep也可以带参数, 比如:Grep -ir word, r表示递归目录. i表示不区分大小写.
+" \vV : 全词匹配搜索, 同:Grep !word;
+" \va : 与vv相似, 搜索结果append在上次搜索结果之后;
+" \vA : 与vV相似, 搜索结果append在上次搜索结果之后;
+" \vr or :Replace :替换;
+" \vo or :GrepOptions: 打开选项菜单;
+
+let g:EasyGrepMode = 2                                                          " All:0, Open Buffers:1, TrackExt:2,
+let g:EasyGrepCommand = 0                                                       " Use vimgrep:0, grepprg:1
+let g:EasyGrepRecursive = 1                                                     "启动递归搜索
+let g:EasyGrepHidden = 1                                                        "搜索隐藏文件
+let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"    "排除不想搜索的file类型
+let g:EasyGrepAllOptionsInExplorer = 1                                          "在使用GrepOption是是否显示所有配置项， 1 是显示
+let g:EasyGrepWindow = 0                                                        "默认情况下也为0  就是Quickfix窗口”
+let g:EasyGrepJumpToMatch = 1                                                   "跳转第一个..
+let g:EasyGrepInvertWholeWord = 1                                               "搜索整个单词
+let g:EasyGrepReplaceWindowMode = 1                                             "全局代替时，执行当前窗口与下一个窗口拆分
+
 
 
 
@@ -294,6 +314,84 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 
 
+"--------------------------------------------------------------------------------
+" neocomplete
+"--------------------------------------------------------------------------------
+"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+
 
 
 
@@ -314,6 +412,7 @@ Bundle 'tikhomirov/vim-glsl'
 Bundle 'beyondmarc/hlsl.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Shougo/neocomplete.vim'
 "if has("win64")
 "    Bundle 'snakeleon/YouCompleteMe-x64'
 "elseif has("win32")
@@ -326,6 +425,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 "ctags.exe win：加载完成后，1.放到c盘的system32文件夹中和vim的plugin中，2.配置plugin的环境变量
 Bundle 'ctags.exe'
 Bundle 'taglist.vim'
+"Bundle 'Tagbar'  貌似无法在winmanager下合并，如果能合并就可以代替taglist
 Bundle 'winmanager'
 Bundle 'minibufexplorerpp'
 Bundle 'The-NERD-tree'
@@ -336,8 +436,9 @@ Bundle 'Syntastic'
 Bundle 'Python-mode-klen'
 Bundle 'rainbow_parentheses.vim'
 "Bundle 'AutoClose'
-"Bundle 'EasyGrep'
-"tagbar vim-multiple-cursors
+Bundle 'EasyGrep'
+"Bundle 'vim-multiple-cursors'
+
 "======================================= non github reposo =======================================
 " non github reposo
 " 非github的插件，可以直接使用其git地址
