@@ -71,7 +71,7 @@ set listchars=tab:\|\ ,
 set foldenable                      " 允许折叠
 set foldmethod=marker               " 标志折叠
 set encoding=utf-8
-set fileencodings=utf-8,gbk,gb18030,gk2312
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set cursorline                      " 设置光标十字坐标，高亮当前行
 set noundofile                      " 不生成.un~文件
 set nobackup                        " 不生成（文件名~）文件
@@ -103,7 +103,7 @@ map <leader>tn :tabnew %<cr>        " 将当前内容在新标签中打开
 map <leader>te :tabedit             " 打开空白新标签
 map <leader>tc :tabclose<cr>        " 关闭当前标签
 map <leader>tm :tabmove             " 移动当前标签到最后
-
+noremap <F12> :split $VIM\_vimrc    " 打开VIM配置文件
 
 
 
