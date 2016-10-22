@@ -40,9 +40,9 @@ filetype on
 let mapleader = ','                 " 重定义<leader>
 autocmd GUIEnter * simalt ~x        " 打开窗口最大化
 "set lines=35 columns=118           " 设置窗口尺
-set guioptions-=T                   "是隐藏工具栏
-set guioptions-=m                   "是隐藏菜单栏
-set smartindent                     " 设置智能缩进{
+set guioptions-=T                   " 隐藏工具栏
+set guioptions-=m                   " 隐藏菜单栏
+set smartindent                     " 设置智能缩进
 set shortmess=atI                   " 去掉欢迎界面
 set t_Co=256                        " 默认为8色，改为256
 set background=dark                 " 背景色
@@ -60,7 +60,7 @@ set nu!                             " 显示行号
 set mouse=a                         " 启用鼠标
 set ruler                           " 右下角显示光标位置的状态行
 set incsearch                       " 查找book时，当输入/b时会自动找到
-set hlsearch                        " 开启高亮显示结果
+set nohlsearch                      " 关闭高亮显示结果
 set incsearch                       " 开启实时搜索功能
 set nowrapscan                      " 搜索到文件两端时不重新搜索
 set nocompatible                    " 关闭兼容模式
@@ -86,6 +86,7 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 "解决consle输出乱码
 language messages zh_CN.utf-8
+hi Comment gui=none                 " 注释字体为默认字体
 "标示不必要的空白字符
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -117,7 +118,7 @@ map <leader>tm :tabmove             " 移动当前标签到最后
 " Ctags
 "--------------------------------------------------------------------------------
 "更新ctags标签文件快捷键设置;设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
-noremap <F5> :!D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe -R
+noremap <F5> :!F:\Vim\vimfiles\bundle\ctags.exe\ctags.exe -R
 
 
 
@@ -125,7 +126,7 @@ noremap <F5> :!D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe -R
 "--------------------------------------------------------------------------------
 "   TagList : Tlist
 "--------------------------------------------------------------------------------
-let Tlist_Ctags_Cmd = 'D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
+let Tlist_Ctags_Cmd = 'F:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
 "设置taglist打开关闭的快捷键F8
 "noremap <F8> :TlistToggle<CR>
 let Tlist_Auto_Highlight_Tag = 1            "自动高亮当前tag
