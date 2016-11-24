@@ -104,8 +104,7 @@ map <leader>tn :tabnew %<cr>        " 将当前内容在新标签中打开
 map <leader>te :tabedit             " 打开空白新标签
 map <leader>tc :tabclose<cr>        " 关闭当前标签
 map <leader>tm :tabmove             " 移动当前标签到最后
-noremap <F12> :split $VIM\_vimrc    " 打开VIM配置文件
-
+noremap <F12> :split $VIM\_vimrc    " 分割窗口模式打开VIM配置文件
 
 
 
@@ -117,7 +116,7 @@ noremap <F12> :split $VIM\_vimrc    " 打开VIM配置文件
 " Ctags
 "--------------------------------------------------------------------------------
 "更新ctags标签文件快捷键设置;设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
-noremap <F5> :!F:\Vim\vimfiles\bundle\ctags.exe\ctags.exe -R
+noremap <F5> :!D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe -R
 
 
 
@@ -125,7 +124,7 @@ noremap <F5> :!F:\Vim\vimfiles\bundle\ctags.exe\ctags.exe -R
 "--------------------------------------------------------------------------------
 "   TagList : Tlist
 "--------------------------------------------------------------------------------
-let Tlist_Ctags_Cmd = 'F:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
+let Tlist_Ctags_Cmd = 'D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
 "设置taglist打开关闭的快捷键F8
 "noremap <F8> :TlistToggle<CR>
 let Tlist_Auto_Highlight_Tag = 1            "自动高亮当前tag
@@ -302,7 +301,7 @@ let g:indent_guides_start_level = 2                      "从第二层开始可�
 " iC Select inner class. Ex: viC, diC, yiC, ciC (normal, operator modes)
 " aM Select a function or method. Ex: vaM, daM, yaM, caM(normal, operator modes)
 " iM Select inner function or method. Ex: viM, diM, yiM, ciM (normal, operator modes)
-let g:pymode_python = 'python3'
+let g:pymode_python = 'python'
 let g:pymode_motion = 1
 let g:pymode_rope = 0
 
@@ -332,7 +331,7 @@ let g:pymode_folding = 0
 
 
 "--------------------------------------------------------------------------------
-" neocomplete
+" neocomplete 当前缓存补全
 "--------------------------------------------------------------------------------
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -388,11 +387,11 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=python3complete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=python3complete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -404,7 +403,7 @@ endif
 
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 
@@ -469,6 +468,19 @@ map <Leader><Leader>h <Plug>(easymotion-linebackward)
 
 
 
+"--------------------------------------------------------------------------------
+" jedi python自动补全
+"--------------------------------------------------------------------------------
+let g:jedi#completions_enabled = 1              " 激活Python
+" let g:jedi#goto_command = "<leader>d"
+" let g:jedi#goto_assignments_command = "<leader>g"
+" let g:jedi#goto_definitions_command = ""
+" let g:jedi#documentation_command = "K"
+" let g:jedi#usages_command = "<leader>n"
+" let g:jedi#completions_command = "<C-Space>"
+" let g:jedi#rename_command = "<leader>r"
+
+
 
 
 "###############################################################################
@@ -491,6 +503,7 @@ Bundle 'Shougo/neosnippet'
 Bundle 'Shougo/neosnippet-snippets'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'easymotion/vim-easymotion'
+Bundle 'davidhalter/jedi-vim'
 "if has("win64")
 "    Bundle 'snakeleon/YouCompleteMe-x64'
 "elseif has("win32")
