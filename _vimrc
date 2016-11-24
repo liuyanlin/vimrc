@@ -236,6 +236,12 @@ let g:vimfiler_as_default_explorer = 1
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='powerlineish'
+nnoremap <S-tab> :bn<CR>
+"快捷键"
+"下一个 :bn
+"上一个 :bp
+"关闭   :bd
+
 
 "--------------------------------------------------------------------------------
 " EsayGrep
