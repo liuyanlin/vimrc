@@ -128,37 +128,43 @@ noremap <F5> :!D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe -R
 
 
 "--------------------------------------------------------------------------------
-"   TagList : Tlist
+"   TagList : Tlist 用tagbar取代
 "--------------------------------------------------------------------------------
-let Tlist_Ctags_Cmd = 'D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
-"设置taglist打开关闭的快捷键F8
-"noremap <F8> :TlistToggle<CR>
-let Tlist_Auto_Highlight_Tag = 1            "自动高亮当前tag
-let Tlist_Auto_Open = 0                     "用Vim打开文件时自动打开Taglist窗口
-let Tlist_Auto_Update = 1                   "自动更新最新编辑文件的taglist
-let Tlist_Close_On_Select = 0               "选择了tag后自动关闭taglist窗口
-let Tlist_Compact_Format = 0                "减少标签列表窗口中的空白行
-let Tlist_Display_Prototype = 0             "是否在标签列表窗口用标签原型替代标签名
-let Tlist_Display_Tag_Scope = 1             "在标签名后是否显示标签有效范围
-let Tlist_Enable_Fold_Column = 0            "是否不显示Vim目录列
-let Tlist_Exit_OnlyWindow = 1               "Vim当前仅打开标签列表窗口时，是否自动退出Vim
-let Tlist_File_Fold_Auto_Close = 1          "自动关闭标签列表窗口中非激活文件/缓冲区所在文档标签树，仅显示当前缓冲区标签树
-let Tlist_GainFocus_On_ToggleOpen = 0       "为1则使用TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口；为0则taglist打开后焦点仍保持在代码窗口
-let Tlist_Hightlight_Tag_On_BufEnter = 1    "默认情况下，Vim打开/切换至一个新的缓冲区/文件后，标签列表窗口会自动将当前代码窗口对应的标签高亮显示。
-                                            "TlistHighlight_Tag_On_BufEnter置为0可禁止以上行为
-let Tlist_Inc_Winwidth = 0                  "显示标签列表窗口时允许/禁止扩展Vim窗口宽度
-let Tlist_Max_Submenu_Items = 1             "子菜单项上限值。如子菜单项超出此上Tlist_GainFocus_On_ToggleOpen限将会被分隔到多个子菜单中。缺省值为25
-let Tlist_Max_Tag_Length = 30               "标签菜单中标签长度上限
-let Tlist_Process_File_Always = 0           "为1则即使标签列表窗口未打开，taglist仍然会在后台处理vim所打开文件的标签
-let Tlist_Show_Menu = 0                     "在图型界面Vim中，是否以下拉菜单方式显示当前文件中的标签
-let Tlist_Show_One_File = 1                 "不同时显示多个文件的tag，仅显示一个
-let Tlist_Sort_Type = "order"
-let Tlist_Use_Horiz_Window = 0             "标签列表窗口使用水平分割样式
-let Tlist_Use_Right_Window = 1              "标签列表窗口显示在右侧（使用垂直分割样式时）
-let Tlist_WinWidth = 30                     "设定水平分割时标签列表窗口的宽度
-"let Tlist_WinHeight = 30                    "设置taglist窗口大
+" let Tlist_Ctags_Cmd = 'D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
+" "设置taglist打开关闭的快捷键F8
+" "noremap <F8> :TlistToggle<CR>
+" let Tlist_Auto_Highlight_Tag = 1            "自动高亮当前tag
+" let Tlist_Auto_Open = 0                     "用Vim打开文件时自动打开Taglist窗口
+" let Tlist_Auto_Update = 1                   "自动更新最新编辑文件的taglist
+" let Tlist_Close_On_Select = 0               "选择了tag后自动关闭taglist窗口
+" let Tlist_Compact_Format = 0                "减少标签列表窗口中的空白行
+" let Tlist_Display_Prototype = 0             "是否在标签列表窗口用标签原型替代标签名
+" let Tlist_Display_Tag_Scope = 1             "在标签名后是否显示标签有效范围
+" let Tlist_Enable_Fold_Column = 0            "是否不显示Vim目录列
+" let Tlist_Exit_OnlyWindow = 1               "Vim当前仅打开标签列表窗口时，是否自动退出Vim
+" let Tlist_File_Fold_Auto_Close = 1          "自动关闭标签列表窗口中非激活文件/缓冲区所在文档标签树，仅显示当前缓冲区标签树
+" let Tlist_GainFocus_On_ToggleOpen = 0       "为1则使用TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口；为0则taglist打开后焦点仍保持在代码窗口
+" let Tlist_Hightlight_Tag_On_BufEnter = 1    "默认情况下，Vim打开/切换至一个新的缓冲区/文件后，标签列表窗口会自动将当前代码窗口对应的标签高亮显示。
+"                                             "TlistHighlight_Tag_On_BufEnter置为0可禁止以上行为
+" let Tlist_Inc_Winwidth = 0                  "显示标签列表窗口时允许/禁止扩展Vim窗口宽度
+" let Tlist_Max_Submenu_Items = 1             "子菜单项上限值。如子菜单项超出此上Tlist_GainFocus_On_ToggleOpen限将会被分隔到多个子菜单中。缺省值为25
+" let Tlist_Max_Tag_Length = 30               "标签菜单中标签长度上限
+" let Tlist_Process_File_Always = 0           "为1则即使标签列表窗口未打开，taglist仍然会在后台处理vim所打开文件的标签
+" let Tlist_Show_Menu = 0                     "在图型界面Vim中，是否以下拉菜单方式显示当前文件中的标签
+" let Tlist_Show_One_File = 1                 "不同时显示多个文件的tag，仅显示一个
+" let Tlist_Sort_Type = "order"
+" let Tlist_Use_Horiz_Window = 0             "标签列表窗口使用水平分割样式
+" let Tlist_Use_Right_Window = 1              "标签列表窗口显示在右侧（使用垂直分割样式时）
+" let Tlist_WinWidth = 30                     "设定水平分割时标签列表窗口的宽度
+" "let Tlist_WinHeight = 30                    "设置taglist窗口大
 
 
+"--------------------------------------------------------------------------------
+"   Tagbar : TagbarToggle
+"--------------------------------------------------------------------------------
+nmap <silent> <Leader>tb :TagbarToggle<CR>
+let g:tagbar_ctags_bin= 'D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
+let g:tagbar_width=30
 
 
 "--------------------------------------------------------------------------------
@@ -535,8 +541,8 @@ Bundle 'Shougo/unite.vim'
 "==================================== vim-scripts repos =========================
 " vimscripts的repo使用下面的格式，直接是插件名称 http://vim-scripts.org/
 Bundle 'ctags.exe'
-Bundle 'taglist.vim'
-"Bundle 'Tagbar'  貌似无法在winmanager下合并，如果能合并就可以代替taglist
+"Bundle 'taglist.vim'
+Bundle 'Tagbar'
 "Bundle 'winmanager'
 " Bundle 'minibufexplorerpp'
 "Bundle 'The-NERD-tree'
