@@ -77,7 +77,7 @@ set nobackup                        " 不生成（文件名~）文件
 set noswapfile                      " 不生成.swap文件
 syntax enable                       " 打开语法高亮
 syntax on                           " 开启文件类型侦测
-filetype indent on                  " 针对不同的文件类型采用不同的缩进格式
+filetype indent on                  " 针对不同的文件类型采用不同的缩进格
 filetype plugin on                  " 针对不同的文件类型加载对应的插件
 filetype plugin indent on           " 启用自动补全
 language messages zh_CN.utf-8       " 解决consle输出乱码 
@@ -97,11 +97,13 @@ source $VIMRUNTIME/menu.vim
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 
-
-
 "###############################################################################
 "   System KeyBoard Setting
 "###############################################################################
+" 恢复Ctrl-Y为默认设置 win下Ctrl-Y被重新映射为Ctrl-R(Redo)
+unmap <C-Y>
+iunmap <C-Y>
+
 nmap <leader>w :w!<cr>              " 强行保存
 nmap <leader>q :q!<cr>              " 强行不保存退出
 nmap <leader>wq :wq<cr>             " 保存退出
@@ -162,7 +164,7 @@ noremap <F5> :!D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe -R
 "--------------------------------------------------------------------------------
 "   Tagbar : TagbarToggle
 "--------------------------------------------------------------------------------
-nmap <silent> <Leader>tb :TagbarToggle<CR>
+cmap <silent> tb TagbarToggle
 let g:tagbar_ctags_bin= 'D:\Vim\vimfiles\bundle\ctags.exe\ctags.exe'      "设置ctags路径 如果没设置PATH变量，需要使用此选项设置一下
 let g:tagbar_width=30
 
