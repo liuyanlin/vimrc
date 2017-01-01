@@ -511,7 +511,8 @@ let g:jedi#completions_enabled = 1              " 激活Python
 "--------------------------------------------------------------------------------
 " LUA配置
 "--------------------------------------------------------------------------------
-"lua53.dll + lua53.exe + luac53.exe 放在gvim.exe同目录下"
+"luaXX.dll + luaXX.exe + luacXX.exe 放在gvim.exe同目录下"
+"注意：lua的版本要和vim编译的lua版本在大版本上一直"
 :let g:lua_complete_omni = 1
 
 
