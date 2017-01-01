@@ -508,6 +508,12 @@ let g:jedi#completions_enabled = 1              " 激活Python
 " let g:jedi#rename_command = "<leader>r"
 
 
+"--------------------------------------------------------------------------------
+" LUA配置
+"--------------------------------------------------------------------------------
+"lua53.dll + lua53.exe + luac53.exe 放在gvim.exe同目录下"
+:let g:lua_complete_omni = 1
+
 
 "###############################################################################
 "                               The vundle' setting
@@ -533,6 +539,8 @@ Bundle 'easymotion/vim-easymotion'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'Shougo/vimfiler.vim'
 Bundle 'Shougo/unite.vim'
+Bundle 'xolox/vim-lua-ftplugin'
+Bundle 'xolox/vim-misc'
 "if has("win64")
 "    Bundle 'snakeleon/YouCompleteMe-x64'
 "elseif has("win32")
