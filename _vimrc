@@ -36,7 +36,7 @@ endfunction
 "###############################################################################
 "   System Setting
 "###############################################################################
-filetype on
+filetype off
 let mapleader = ','                 " 重定义<leader>
 autocmd GUIEnter * simalt ~x        " 打开窗口最大化
 "set lines=35 columns=118           " 设置窗口尺
@@ -185,25 +185,26 @@ let g:solarized_visibility= "normal"
 "--------------------------------------------------------------------------------
 " The-NERD-tree
 "--------------------------------------------------------------------------------
-""nmap <silent> <F2> :NERDTreeMirror<CR>
-""nmap <silent> <F2> :NERDTreeToggle<CR>
-""let NERDTreeWinSize=30                  "窗口大小
-""let NERDTreeWinPos='left'               "窗口位置
-"let NERDTreeShowLineNumbers=1           "是否默认显示行号
-"let NERDTreeShowHidden=0                "是否默认显示隐藏文件
-""不显示指定的类型的文件
-"let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
-"let NERDTreeCaseSensitiveSort=0         "不分大小写排序
-"let NERDTreeHighlightCursorline=1       "高亮NERDTrre窗口的当前行
-""let NERDTreeShowHidden=1               "显示隐藏文件
+"nmap <silent> <F2> :NERDTreeMirror<CR>
+"nmap <silent> <F2> :NERDTreeToggle<CR>
+"let NERDTreeWinSize=30                  "窗口大小
+"let NERDTreeWinPos='left'               "窗口位置
+let NERDTreeShowLineNumbers=0           "是否默认显示行号
+let NERDTreeShowHidden=0                "是否默认显示隐藏文件
+"不显示指定的类型的文件
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '^\.svn$', '^\.hg$' ]
+let NERDTreeCaseSensitiveSort=0         "不分大小写排序
+let NERDTreeHighlightCursorline=1       "高亮NERDTrre窗口的当前行
+"let NERDTreeShowHidden=1               "显示隐藏文件
+autocmd VimEnter * NERDTree            "默认打开
 
 
 
 "--------------------------------------------------------------------------------
 " VimFiler
 "--------------------------------------------------------------------------------
-autocmd VimEnter * VimFilerExplorer         "默认打开
-let g:vimfiler_as_default_explorer = 1
+"autocmd VimEnter * VimFilerExplorer         "默认打开
+"let g:vimfiler_as_default_explorer = 1
 
 
 "--------------------------------------------------------------------------------
@@ -230,11 +231,11 @@ let g:vimfiler_as_default_explorer = 1
 "--------------------------------------------------------------------------------
 " MiniBufExplorer
 "--------------------------------------------------------------------------------
-" let g:miniBufExplMapWindowNavVim = 1
-" let g:miniBufExplMapWindowNavArrows = 1
-" let g:miniBufExplMapCTabSwitchBufs = 1
-" let g:miniBufExplModSelTarget = 1
-" let g:miniBufExplMoreThanOne = 0
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+let g:miniBufExplMoreThanOne = 0
 
 
 
@@ -242,9 +243,9 @@ let g:vimfiler_as_default_explorer = 1
 " vim-airline
 "--------------------------------------------------------------------------------
 set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='powerlineish'
-nnoremap <S-tab> :bn<CR>
+"let g:airline#extensions#tabline#enabled = 1
+"nnoremap <S-tab> :bn<CR>
 "快捷键"
 "下一个 :bn
 "上一个 :bp
@@ -273,6 +274,7 @@ let g:EasyGrepWindow = 0                                                        
 let g:EasyGrepJumpToMatch = 1                                                   "跳转第一个..
 let g:EasyGrepInvertWholeWord = 1                                               "搜索整个单词
 let g:EasyGrepReplaceWindowMode = 1                                             "全局代替时，执行当前窗口与下一个窗口拆分
+let g:EasyGrepFileAssociationsInExplorer = 1                                    "文件中显示关系表
 
 
 
@@ -522,26 +524,26 @@ let g:jedi#completions_enabled = 1              " 激活Python
 "=====================================vundle====================================
 " set rtp+=~/.vim/bundle/vundle/
 " 如果在windows下使用的话，设置为
-set rtp+=$VIM/vimfiles/bundle/vundle/
+set rtp+=$VIM/vimfiles/bundle/Vundle.Vim/
 call vundle#rc('$VIM/vimfiles/bundle/')
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 "=============================== original repos on github ======================
 " github上的用户写的插件，使用这种用户名+repo名称的方式
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'easymotion/vim-easymotion'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'Shougo/vimfiler.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'xolox/vim-lua-ftplugin'
-Bundle 'xolox/vim-misc'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'davidhalter/jedi-vim'
+"Plugin 'Shougo/vimfiler.vim'
+"Plugin 'Shougo/unite.vim'
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'xolox/vim-misc'
 "if has("win64")
 "    Bundle 'snakeleon/YouCompleteMe-x64'
 "elseif has("win32")
@@ -551,17 +553,17 @@ Bundle 'xolox/vim-misc'
 "endif
 "==================================== vim-scripts repos =========================
 " vimscripts的repo使用下面的格式，直接是插件名称 http://vim-scripts.org/
-Bundle 'ctags.exe'
+Plugin 'ctags.exe'
 "Bundle 'taglist.vim'
-Bundle 'Tagbar'
+Plugin 'Tagbar'
 "Bundle 'winmanager'
-" Bundle 'minibufexplorerpp'
-"Bundle 'The-NERD-tree'
-Bundle 'ctrlp.vim'
-Bundle 'Syntastic'
-Bundle 'Python-mode-klen'
-Bundle 'rainbow_parentheses.vim'
-Bundle 'EasyGrep'
+Bundle 'minibufexplorerpp'
+Bundle 'The-NERD-tree'
+Plugin 'ctrlp.vim'
+Plugin 'Syntastic'
+Plugin 'Python-mode-klen'
+Plugin 'rainbow_parentheses.vim'
+Plugin 'EasyGrep'
 "Bundle 'AutoClose'
 "Bundle 'vim-multiple-cursors'
 
@@ -575,15 +577,18 @@ Bundle 'EasyGrep'
 
 
 "=========================================== Brief help ==========================================
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 "
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-" vundle主要就是上面这个四个命令，例如BundleInstall是全部重新安装，BundleInstall!则是更新
-" 一般安装插件的流程为，先BundleSearch一个插件，然后在列表中选中，按i安装
-" 安装完之后，在vimrc中，添加Bundle 'XXX'，使得bundle能够加载，这个插件，同时如果
-" 需要配置这个插件，也是在vimrc中设置即可
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" Put your non-Plugin stuff after this line
 
